@@ -3,18 +3,18 @@ interface UserProperty {
   email: string;
   password: string;
   name: string;
-  lastName: string;
-  sex: string;
-  age: number;
+  lastName?: string;
+  sex?: string;
+  age?: number;
 }
 export class User {
   id: number;
   email: string;
   password: string;
   name: string;
-  lastName: string;
-  sex: string;
-  age: number;
+  lastName?: string;
+  sex?: string;
+  age?: number;
 
   constructor({ name, email, password, lastName, sex, age, id }: UserProperty) {
     this.id = id;

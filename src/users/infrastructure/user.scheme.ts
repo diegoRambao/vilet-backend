@@ -23,13 +23,13 @@ export class UserScheme {
   @Column('varchar', { length: 255 })
   name: string;
 
-  @Column('varchar', { length: 255 })
+  @Column('varchar', { length: 255, nullable: true })
   lastName: string;
 
-  @Column('varchar', { length: 255 })
+  @Column('varchar', { length: 255, nullable: true })
   sex: string;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: true })
   age: number;
 
   @CreateDateColumn()

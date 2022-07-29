@@ -7,11 +7,13 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { GetListUserUseCase } from '../application/get-list-user.use-case';
 import { GetUserUseCase } from '../application/get-user.use-case';
 import { UpdateUserUseCase } from '../application/update-user.use-case';
 import { DeleteUserUseCase } from '../application/delete-user.use-case';
+import { JwtAuthGuard } from '../../shared/common/guards/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -23,6 +25,7 @@ export class UsersController {
     private deleteUser: DeleteUserUseCase,
   ) {}
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.getUsers.execute();

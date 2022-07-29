@@ -6,4 +6,5 @@ export interface UserRepositoryInterface {
   saveUser(user: User): Promise<User>;
   updateUser(id: number, user: User): Promise<void>;
   deleteUser(id: number): Promise<void>;
+  getUserByEmail(email: string): Promise<User>;
 }

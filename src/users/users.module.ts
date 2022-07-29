@@ -13,8 +13,9 @@ import { DeleteUserUseCase } from './application/delete-user.use-case';
 @Module({
   imports: [TypeOrmModule.forFeature([UserScheme])],
   controllers: [UsersController],
+  exports: [UserRepository],
   providers: [
-    { provide: UserRepository, useClass: UserRepository },
+    UserRepository,
     {
       provide: GetListUserUseCase,
       useFactory: (userRepo: UserRepositoryInterface) => {
