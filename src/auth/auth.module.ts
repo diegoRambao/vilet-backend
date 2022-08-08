@@ -19,6 +19,7 @@ import { JwtTokenModule } from 'src/shared/infrastructure/services/jwt/jwt.modul
 import { ExceptionModule } from '../shared/infrastructure/services/exceptions/exceptions.module';
 import { ExceptionServiceInterface } from 'src/shared/domain/adapters/exceptions.interface';
 import { ExceptionService } from 'src/shared/infrastructure/services/exceptions/exceptions.service';
+import { AuthService } from './infrastructure/services/auth.service';
 
 @Module({
   imports: [
@@ -31,38 +32,38 @@ import { ExceptionService } from 'src/shared/infrastructure/services/exceptions/
   ],
   controllers: [AuthController],
   providers: [
+    {
+      provide: AuthService,
+      useFactory: (
+        bcryptService: BcryptServiceInterface,
+        exceptionService: ExceptionServiceInterface,
+        jwtService: JwtServiceInterface,
+      ) => {
+        return new AuthService(bcryptService, exceptionService, jwtService);
+      },
+      inject: [BcryptService, ExceptionService, JwtTokenService],
+    },
     AuthRepository,
     {
       provide: RegisterUserUseCase,
       useFactory: (
         authRepo: AuthRepositoryInterface,
         bcryptService: BcryptServiceInterface,
+        authService: AuthService,
       ) => {
-        return new RegisterUserUseCase(authRepo, bcryptService);
+        return new RegisterUserUseCase(authRepo, bcryptService, authService);
       },
-      inject: [AuthRepository, BcryptService],
+      inject: [AuthRepository, BcryptService, AuthService],
     },
     {
       provide: LoginUserUseCase,
       useFactory: (
         userRepo: UserRepositoryInterface,
-        bcryptService: BcryptServiceInterface,
-        jwtService: JwtServiceInterface,
-        exceptionService: ExceptionServiceInterface,
+        authService: AuthService,
       ) => {
-        return new LoginUserUseCase(
-          userRepo,
-          bcryptService,
-          jwtService,
-          exceptionService,
-        );
+        return new LoginUserUseCase(userRepo, authService);
       },
-      inject: [
-        UserRepository,
-        BcryptService,
-        JwtTokenService,
-        ExceptionService,
-      ],
+      inject: [UserRepository, AuthService],
     },
   ],
 })
