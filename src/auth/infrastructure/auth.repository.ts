@@ -12,9 +12,8 @@ export class AuthRepository implements AuthRepositoryInterface {
     private readonly ormRepo: Repository<UserScheme>,
   ) {}
 
-  async signUpUser(user: User): Promise<Omit<User, 'password'>> {
+  async signUpUser(user: User): Promise<User> {
     const userEntity = await this.ormRepo.save(user);
-    delete userEntity.password;
     return User.create(userEntity);
   }
 }
