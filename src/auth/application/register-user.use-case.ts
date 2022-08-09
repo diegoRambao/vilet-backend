@@ -1,18 +1,29 @@
 import { BcryptServiceInterface } from 'src/shared/domain/adapters/bcrypt.interface';
 import { ExceptionServiceInterface } from 'src/shared/domain/adapters/exceptions.interface';
-import { JwtServiceInterface } from 'src/shared/domain/adapters/jwt.interface';
 import { User } from 'src/users/domain/user.entity';
+import { UserRepositoryInterface } from 'src/users/domain/user.repository.interface';
 import { AuthRepositoryInterface } from '../domain/auth.repository.interface';
 import { AuthService } from '../infrastructure/services/auth.service';
 
 export class RegisterUserUseCase {
   constructor(
     private repository: AuthRepositoryInterface,
+    private userRepository: UserRepositoryInterface,
     private bcryptService: BcryptServiceInterface,
     private authService: AuthService,
+    private exceptionService: ExceptionServiceInterface,
   ) {}
 
   async execute(userObject: registerUserInput) {
+    const userSearched = await this.userRepository.getUserByEmail(
+      userObject.email,
+    );
+    if (userSearched) {
+      return this.exceptionService.httException({
+        message: 'User_exist',
+        code_error: 409,
+      });
+    }
     const { password } = userObject;
     const plainToHash = await this.bcryptService.hash(password);
     userObject = { ...userObject, password: plainToHash };

@@ -5,6 +5,7 @@ import {
   Injectable,
   InternalServerErrorException,
   UnauthorizedException,
+  NotFoundException,
 } from '@nestjs/common';
 import {
   ExceptionServiceInterface,
@@ -31,5 +32,9 @@ export class ExceptionService implements ExceptionServiceInterface {
 
   UnauthorizedException(data?: FormatExceptionMessageInterface): void {
     throw new UnauthorizedException(data);
+  }
+
+  notFoundException() {
+    throw new NotFoundException();
   }
 }
