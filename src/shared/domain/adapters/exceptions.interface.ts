@@ -9,4 +9,5 @@ export interface ExceptionServiceInterface {
   forbiddenException(data?: FormatExceptionMessageInterface): void;
   UnauthorizedException(data?: FormatExceptionMessageInterface): void;
   httException(data?: FormatExceptionMessageInterface): void;
+  notFoundException(data?: FormatExceptionMessageInterface): void;
 }
