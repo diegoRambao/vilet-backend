@@ -1,6 +1,7 @@
 export interface FormatExceptionMessageInterface {
-  message: string;
-  code_error?: number;
+  message: string | string[];
+  statusCode?: number;
+  error?: string | string[];
 }
 
 export interface ExceptionServiceInterface {
@@ -9,4 +10,5 @@ export interface ExceptionServiceInterface {
   forbiddenException(data?: FormatExceptionMessageInterface): void;
   UnauthorizedException(data?: FormatExceptionMessageInterface): void;
   httException(data?: FormatExceptionMessageInterface): void;
+  notFoundException(data?: FormatExceptionMessageInterface): void;
 }

@@ -48,22 +48,37 @@ import { AuthService } from './infrastructure/services/auth.service';
       provide: RegisterUserUseCase,
       useFactory: (
         authRepo: AuthRepositoryInterface,
+        userRepository: UserRepositoryInterface,
         bcryptService: BcryptServiceInterface,
         authService: AuthService,
+        exceptionService: ExceptionServiceInterface,
       ) => {
-        return new RegisterUserUseCase(authRepo, bcryptService, authService);
+        return new RegisterUserUseCase(
+          authRepo,
+          userRepository,
+          bcryptService,
+          authService,
+          exceptionService,
+        );
       },
-      inject: [AuthRepository, BcryptService, AuthService],
+      inject: [
+        AuthRepository,
+        UserRepository,
+        BcryptService,
+        AuthService,
+        ExceptionService,
+      ],
     },
     {
       provide: LoginUserUseCase,
       useFactory: (
         userRepo: UserRepositoryInterface,
         authService: AuthService,
+        exceptionService: ExceptionServiceInterface,
       ) => {
-        return new LoginUserUseCase(userRepo, authService);
+        return new LoginUserUseCase(userRepo, authService, exceptionService);
       },
-      inject: [UserRepository, AuthService],
+      inject: [UserRepository, AuthService, ExceptionService],
     },
   ],
 })

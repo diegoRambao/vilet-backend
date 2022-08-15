@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../domain/user.entity';
@@ -12,12 +12,9 @@ export class UserRepository implements UserRepositoryInterface {
     private readonly ormRepo: Repository<UserScheme>,
   ) {}
 
-  async getUserByEmail(email: string): Promise<User> {
+  async getUserByEmail(email: string): Promise<User | null> {
     const userEntity = await this.ormRepo.findOneBy({ email });
-    if (!userEntity) {
-      throw new NotFoundException();
-    }
-    return User.create(userEntity);
+    return userEntity ? User.create(userEntity) : null;
   }
 
   async getListUsers(): Promise<User[]> {
