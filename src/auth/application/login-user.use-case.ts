@@ -14,7 +14,7 @@ export class LoginUserUseCase {
     const findUser = await this.userRepository.getUserByEmail(email);
 
     if (!findUser) {
-      this.exceptionService.notFoundException();
+      this.exceptionService.UnauthorizedException();
     }
 
     return this.authService.validateCredentials(findUser, password);

@@ -5,6 +5,5 @@ export interface JwtServicePayloadInterface {
 }
 
 export interface JwtServiceInterface {
-  checkToken(token: string): Promise<any>;
   createToken(payload: JwtServicePayloadInterface): string;
 }

@@ -20,7 +20,7 @@ export class RegisterUserUseCase {
     );
     if (userSearched) {
       return this.exceptionService.httException({
-        message: 'User_exist',
+        message: 'userExist',
         statusCode: 409,
       });
     }
