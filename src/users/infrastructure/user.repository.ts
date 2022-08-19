@@ -13,7 +13,7 @@ export class UserRepository implements UserRepositoryInterface {
   ) {}
 
   async getUserByEmail(email: string): Promise<User | null> {
-    var userEntity = await this.ormRepo.findOneBy({ email });
+    const userEntity = await this.ormRepo.findOneBy({ email });
     return userEntity ? User.create(userEntity) : null;
   }
 
