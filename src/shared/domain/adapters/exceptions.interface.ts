@@ -1,6 +1,7 @@
 export interface FormatExceptionMessageInterface {
-  message: string;
-  code_error?: number;
+  message: string | string[];
+  statusCode?: number;
+  error?: string | string[];
 }
 
 export interface ExceptionServiceInterface {

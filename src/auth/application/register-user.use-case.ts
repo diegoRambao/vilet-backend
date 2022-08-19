@@ -20,8 +20,8 @@ export class RegisterUserUseCase {
     );
     if (userSearched) {
       return this.exceptionService.httException({
-        message: 'User_exist',
-        code_error: 409,
+        message: 'userExist',
+        statusCode: 409,
       });
     }
     const { password } = userObject;

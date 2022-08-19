@@ -31,6 +31,11 @@ export class UsersController {
     return this.getUsers.execute();
   }
 
+  @UseGuards(JwtAuthGuard)
+  findOneById(id: number) {
+    return this.getUser.execute(id);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.getUser.execute(id);
