@@ -9,8 +9,6 @@ import { JwtTokenModule } from './shared/infrastructure/services/jwt/jwt.module'
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './shared/common/strategies/jwt.strategy';
 
-console.log(process.env.JWT_SECRET);
-
 @Module({
   imports: [
     JwtModule.register({
