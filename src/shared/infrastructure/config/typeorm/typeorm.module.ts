@@ -5,8 +5,8 @@ import { EnvironmentConfigService } from '../../environment-config/environment-c
 
 export const getTypeOrmModuleOptions = (
   config: EnvironmentConfigService,
-): TypeOrmModuleOptions =>
-  ({
+): TypeOrmModuleOptions => {
+  return {
     type: 'mysql',
     host: config.getDatabaseHost(),
     port: config.getDatabasePort(),
@@ -15,7 +15,8 @@ export const getTypeOrmModuleOptions = (
     database: config.getDatabaseName(),
     synchronize: true,
     autoLoadEntities: true,
-  } as TypeOrmModuleOptions);
+  } as TypeOrmModuleOptions;
+};
 
 @Module({
   imports: [

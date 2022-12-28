@@ -1,3 +1,5 @@
+import { CategoryScheme } from 'src/categories/infrastructure/category.scheme';
+import { UserType } from 'src/shared/types/type.enum';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -5,6 +7,7 @@ import {
   DeleteDateColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity({
@@ -26,18 +29,33 @@ export class UserScheme {
   @Column('varchar', { length: 255, nullable: true })
   lastName: string;
 
-  @Column('varchar', { length: 255, nullable: true })
-  sex: string;
+  @Column({
+    type: 'enum',
+    enum: UserType,
+    default: UserType.client,
+  })
+  type: UserType;
 
-  @Column({ type: 'integer', nullable: true })
-  age: number;
+  // @Column('varchar', { length: 255, nullable: true })
+  // categoryId?: number;
+
+  @Column('text', { nullable: true })
+  description?: string;
+
+  @Column('varchar', { nullable: true })
+  location?: string | number;
+
+  @ManyToOne(() => CategoryScheme, (category) => category.users, {
+    nullable: true,
+  })
+  category?: CategoryScheme | null;
 
   @CreateDateColumn()
-  createAt: Date;
+  createAt?: Date;
 
   @UpdateDateColumn()
-  updateAt: Date;
+  updateAt?: Date;
 
   @DeleteDateColumn()
-  deleteAt: Date;
+  deleteAt?: Date;
 }

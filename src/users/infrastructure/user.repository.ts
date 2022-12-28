@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Category } from 'src/categories/domain/category.entity';
 import { Repository } from 'typeorm';
 import { User } from '../domain/user.entity';
 import { UserRepositoryInterface } from '../domain/user.repository.interface';
@@ -12,22 +13,42 @@ export class UserRepository implements UserRepositoryInterface {
     private readonly ormRepo: Repository<UserScheme>,
   ) {}
 
+  async validateUserExists({ email }: User): Promise<boolean> {
+    const userSearched = await this.getUserByEmail(email);
+    return !!userSearched;
+  }
+
   async getUserByEmail(email: string): Promise<User | null> {
-    const userEntity = await this.ormRepo.findOneBy({ email });
-    return userEntity ? User.create(userEntity) : null;
+    const userEntity = await this.ormRepo.findOne({
+      where: { email },
+      relations: ['category'],
+    });
+    const categoryEntity =
+      userEntity?.category && Category.create(userEntity?.category);
+    return userEntity
+      ? User.create({ ...userEntity, category: categoryEntity })
+      : null;
   }
 
   async getListUsers(): Promise<User[]> {
-    const usersEntity = await this.ormRepo.find();
-    return usersEntity.map((user) => User.create(user));
+    const usersEntity = await this.ormRepo.find({ relations: ['category'] });
+    return usersEntity.map((user) => {
+      const categoryEntity = user?.category && Category.create(user?.category);
+      return User.create({ ...user, category: categoryEntity });
+    });
   }
 
   async getUser(id: number): Promise<User> {
-    const userEntity = await this.ormRepo.findOneBy({ id });
+    const userEntity = await this.ormRepo.findOne({
+      where: { id },
+      relations: ['category'],
+    });
     if (!userEntity) {
       throw new NotFoundException();
     }
-    return User.create(userEntity);
+    const categoryEntity =
+      userEntity?.category && Category.create(userEntity.category);
+    return User.create({ ...userEntity, category: categoryEntity });
   }
 
   saveUser(user: User): Promise<User> {

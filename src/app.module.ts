@@ -8,6 +8,7 @@ import { BcryptModule } from './shared/infrastructure/services/bcrypt/bcrypt.mod
 import { JwtTokenModule } from './shared/infrastructure/services/jwt/jwt.module';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './shared/common/strategies/jwt.strategy';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { JwtStrategy } from './shared/common/strategies/jwt.strategy';
     EnvironmentConfigModule,
     UsersModule,
     AuthModule,
+    CategoriesModule,
   ],
   providers: [JwtStrategy],
 })

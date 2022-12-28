@@ -9,9 +9,12 @@ import { GetUserUseCase } from './application/get-user.use-case';
 import { GetListUserUseCase } from './application/get-list-user.use-case';
 import { UpdateUserUseCase } from './application/update-user.use-case';
 import { DeleteUserUseCase } from './application/delete-user.use-case';
+import { ExceptionServiceInterface } from 'src/shared/domain/adapters/exceptions.interface';
+import { ExceptionService } from 'src/shared/infrastructure/services/exceptions/exceptions.service';
+import { ExceptionModule } from 'src/shared/infrastructure/services/exceptions/exceptions.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UserScheme])],
+  imports: [TypeOrmModule.forFeature([UserScheme]), ExceptionModule],
   controllers: [UsersController],
   exports: [UserRepository],
   providers: [
@@ -32,10 +35,13 @@ import { DeleteUserUseCase } from './application/delete-user.use-case';
     },
     {
       provide: SaveUserUseCase,
-      useFactory: (userRepo: UserRepositoryInterface) => {
-        return new SaveUserUseCase(userRepo);
+      useFactory: (
+        userRepo: UserRepositoryInterface,
+        exceptionService: ExceptionServiceInterface,
+      ) => {
+        return new SaveUserUseCase(userRepo, exceptionService);
       },
-      inject: [UserRepository],
+      inject: [UserRepository, ExceptionService],
     },
     {
       provide: UpdateUserUseCase,

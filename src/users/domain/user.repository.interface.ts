@@ -7,4 +7,5 @@ export interface UserRepositoryInterface {
   updateUser(id: number, user: User): Promise<void>;
   deleteUser(id: number): Promise<void>;
   getUserByEmail(email: string): Promise<User | null>;
+  validateUserExists(user: User): Promise<boolean>;
 }

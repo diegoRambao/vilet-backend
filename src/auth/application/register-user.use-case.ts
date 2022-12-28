@@ -1,5 +1,6 @@
 import { BcryptServiceInterface } from 'src/shared/domain/adapters/bcrypt.interface';
 import { ExceptionServiceInterface } from 'src/shared/domain/adapters/exceptions.interface';
+import { UserType } from 'src/shared/types/type.enum';
 import { User } from 'src/users/domain/user.entity';
 import { UserRepositoryInterface } from 'src/users/domain/user.repository.interface';
 import { AuthRepositoryInterface } from '../domain/auth.repository.interface';
@@ -37,4 +38,5 @@ type registerUserInput = {
   name: string;
   email: string;
   password: string;
+  type: UserType;
 };
