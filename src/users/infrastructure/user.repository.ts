@@ -23,19 +23,12 @@ export class UserRepository implements UserRepositoryInterface {
       where: { email },
       relations: ['category'],
     });
-    const categoryEntity =
-      userEntity?.category && Category.create(userEntity?.category);
-    return userEntity
-      ? User.create({ ...userEntity, category: categoryEntity })
-      : null;
+    return userEntity ? User.create(userEntity) : null;
   }
 
   async getListUsers(): Promise<User[]> {
     const usersEntity = await this.ormRepo.find({ relations: ['category'] });
-    return usersEntity.map((user) => {
-      const categoryEntity = user?.category && Category.create(user?.category);
-      return User.create({ ...user, category: categoryEntity });
-    });
+    return usersEntity.map((user) => User.create(user));
   }
 
   async getUser(id: number): Promise<User> {
@@ -46,9 +39,7 @@ export class UserRepository implements UserRepositoryInterface {
     if (!userEntity) {
       throw new NotFoundException();
     }
-    const categoryEntity =
-      userEntity?.category && Category.create(userEntity.category);
-    return User.create({ ...userEntity, category: categoryEntity });
+    return User.create(userEntity);
   }
 
   saveUser(user: User): Promise<User> {

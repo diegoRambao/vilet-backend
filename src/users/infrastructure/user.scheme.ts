@@ -1,3 +1,4 @@
+import { Category } from 'src/categories/domain/category.entity';
 import { CategoryScheme } from 'src/categories/infrastructure/category.scheme';
 import { UserType } from 'src/shared/types/type.enum';
 import {
@@ -48,7 +49,7 @@ export class UserScheme {
   @ManyToOne(() => CategoryScheme, (category) => category.users, {
     nullable: true,
   })
-  category?: CategoryScheme | null;
+  category?: Category | null;
 
   @CreateDateColumn()
   createAt?: Date;

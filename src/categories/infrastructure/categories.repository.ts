@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { SubCategory } from 'src/subcategories/domain/subcategory.entity';
 import { Repository } from 'typeorm';
 import { Category } from '../domain/category.entity';
 import { CategoryRepositoryInterface } from '../domain/category.repository.interface';
@@ -13,12 +14,17 @@ export class CategoryRepository implements CategoryRepositoryInterface {
   ) {}
 
   async getListCategories(): Promise<Category[]> {
-    const categoriesEntity = await this.ormRepo.find();
+    const categoriesEntity = await this.ormRepo.find({
+      relations: ['subcategories'],
+    });
     return categoriesEntity.map((category) => Category.create(category));
   }
 
   async getCategory(id: number): Promise<Category> {
-    const categoryEntity = await this.ormRepo.findOneBy({ id });
+    const categoryEntity = await this.ormRepo.findOne({
+      where: { id },
+      relations: ['subcategories'],
+    });
     return !categoryEntity ? null : Category.create(categoryEntity);
   }
 
