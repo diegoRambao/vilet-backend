@@ -83,6 +83,7 @@ The project is a backend that manages the endpoints necessary for the proper fun
 ### Built With
 
 - [![Node][node]][node-url]
+- [![TypeScript][typescript]][typescript-url]
 - [![Nest][nest.js]][nest-url]
 - [![Mysql][mysql]][mysql-url]
 
@@ -92,64 +93,69 @@ The project is a backend that manages the endpoints necessary for the proper fun
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To start you must have `MySQL` installed with a database called `vilet`
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+It is recommended to install the nest js CLI
 
 - npm
   ```sh
-  npm install npm@latest -g
+  npm i -g @nestjs/cli
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/diegorambao/vilet.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. set your environment variables in `development.env`
+
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   DATABASE_HOST=YOUR HOST DATABASE
+   DATABASE_PORT=3306
+   DATABASE_USER=YOUR USER DATABASE
+   DATABASE_PASSWORD=YOUR PASSWORD DATABASE
+   DATABASE_NAME=YOUR NAME DATABASE
+   DATABASE_SYNCHRONIZE=true
+   JWT_SECRET=74YLbq4%c!wU
+   JWT_EXPIRATION_TIME=1800
+   JWT_REFRESH_TOKEN_SECRET=7jML9q4-c!s0
+   JWT_REFRESH_TOKEN_EXPIRATION_TIME=86400
+   PORT=3000
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+4. to start a development server
+
+```sh
+ npm run start:dev
+```
+
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- USAGE EXAMPLES -->
 
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- ROADMAP -->
 
-## Roadmap
+<!-- ## Roadmap
 
 - [ ] Feature 1
 - [ ] Feature 2
 - [ ] Feature 3
   - [ ] Nested Feature
 
-See the [open issues](https://github.com/diegorambao/vilet/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/diegorambao/vilet/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
 ## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -174,7 +180,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+diegorambao - [@twitter_handle](https://twitter.com/diegorambao)
 
 Project Link: [https://github.com/diegorambao/vilet](https://github.com/diegorambao/vilet)
 
@@ -182,13 +188,13 @@ Project Link: [https://github.com/diegorambao/vilet](https://github.com/diegoram
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
+<!-- ## Acknowledgments
 
 - []()
 - []()
 - []()
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -211,3 +217,5 @@ Project Link: [https://github.com/diegorambao/vilet](https://github.com/diegoram
 [nest-url]: https://nestjs.com/
 [mysql]: https://img.shields.io/badge/MySql-blue?style=for-the-badge&logo=mysql&logoColor=white
 [mysql-url]: https://www.mysql.com/
+[typescript]: https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript&logoColor=white
+[typescript-url]: https://www.typescriptlang.org/
