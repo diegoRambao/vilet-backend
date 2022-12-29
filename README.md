@@ -33,16 +33,16 @@
 <h1 align="center">Backend Vilet</h3>
 
   <p align="center">
-    backend for vilet app
+    backend for vilet-backend app
     <br />
-    <a href="https://github.com/diegorambao/vilet"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/diegorambao/vilet-backend"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/diegorambao/vilet">Demo</a>
+    <a href="https://github.com/diegorambao/vilet-backend">Demo</a>
     ·
-    <a href="https://github.com/diegorambao/vilet/issues">Report Bug</a>
+    <a href="https://github.com/diegorambao/vilet-backend/issues">Report Bug</a>
     ·
-    <a href="https://github.com/diegorambao/vilet/issues">Request Feature</a>
+    <a href="https://github.com/diegorambao/vilet-backend/issues">Request Feature</a>
   </p>
 </div>
 
@@ -93,7 +93,7 @@ The project is a backend that manages the endpoints necessary for the proper fun
 
 ## Getting Started
 
-To start you must have `MySQL` installed with a database called `vilet`
+To start you must have `MySQL` installed with a database called `vilet-backend`
 
 ### Prerequisites
 
@@ -108,7 +108,7 @@ It is recommended to install the nest js CLI
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/diegorambao/vilet.git
+   git clone https://github.com/diegorambao/vilet-backend.git
    ```
 2. Install NPM packages
    ```sh
@@ -149,7 +149,7 @@ It is recommended to install the nest js CLI
 - [ ] Feature 3
   - [ ] Nested Feature
 
-See the [open issues](https://github.com/diegorambao/vilet/issues) for a full list of proposed features (and known issues). -->
+See the [open issues](https://github.com/diegorambao/vilet-backend/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -182,7 +182,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 diegorambao - [@twitter_handle](https://twitter.com/diegorambao)
 
-Project Link: [https://github.com/diegorambao/vilet](https://github.com/diegorambao/vilet)
+Project Link: [https://github.com/diegorambao/vilet-backend](https://github.com/diegorambao/vilet-backend)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -199,16 +199,16 @@ Project Link: [https://github.com/diegorambao/vilet](https://github.com/diegoram
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/diegorambao/vilet.svg?style=for-the-badge
-[contributors-url]: https://github.com/diegorambao/vilet/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/diegorambao/vilet.svg?style=for-the-badge
-[forks-url]: https://github.com/diegorambao/vilet/network/members
-[stars-shield]: https://img.shields.io/github/stars/diegorambao/vilet.svg?style=for-the-badge
-[stars-url]: https://github.com/diegorambao/vilet/stargazers
-[issues-shield]: https://img.shields.io/github/issues/diegorambao/vilet.svg?style=for-the-badge
-[issues-url]: https://github.com/diegorambao/vilet/issues
-[license-shield]: https://img.shields.io/github/license/diegorambao/vilet.svg?style=for-the-badge
-[license-url]: https://github.com/diegorambao/vilet/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/diegorambao/vilet-backend.svg?style=for-the-badge
+[contributors-url]: https://github.com/diegorambao/vilet-backend/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/diegorambao/vilet-backend.svg?style=for-the-badge
+[forks-url]: https://github.com/diegorambao/vilet-backend/network/members
+[stars-shield]: https://img.shields.io/github/stars/diegorambao/vilet-backend.svg?style=for-the-badge
+[stars-url]: https://github.com/diegorambao/vilet-backend/stargazers
+[issues-shield]: https://img.shields.io/github/issues/diegorambao/vilet-backend.svg?style=for-the-badge
+[issues-url]: https://github.com/diegorambao/vilet-backend/issues
+[license-shield]: https://img.shields.io/github/license/diegorambao/vilet-backend.svg?style=for-the-badge
+[license-url]: https://github.com/diegorambao/vilet-backend/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [node]: https://img.shields.io/badge/Nodejs-green?style=for-the-badge&logo=nodedotjs&logoColor=white
