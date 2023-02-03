@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { CategoriesController } from './infrastructure/categories.controller';
-import { CategoryScheme } from './infrastructure/category.scheme';
 import { CategoryRepository } from './infrastructure/categories.repository';
-import { SaveCategoryUseCase } from './application/save-category.use-case';
 import { CategoryRepositoryInterface } from './domain/category.repository.interface';
+import { CategoryScheme } from './infrastructure/category.scheme';
+import { DeleteCategoryUseCase } from './application/delete-category.use-case';
 import { GetCategoryUseCase } from './application/get-category.use-case';
 import { GetListCategoryUseCase } from './application/get-list-category.use-case';
+import { SaveCategoryUseCase } from './application/save-category.use-case';
 import { UpdateCategoryUseCase } from './application/update-category.use-case';
-import { DeleteCategoryUseCase } from './application/delete-category.use-case';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CategoryScheme])],

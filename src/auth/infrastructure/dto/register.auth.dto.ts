@@ -13,4 +13,9 @@ export class RegisterAuthDto extends LoginAuthDto {
   @IsNotEmpty()
   @ApiProperty()
   type: UserType;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  phone: string;
 }

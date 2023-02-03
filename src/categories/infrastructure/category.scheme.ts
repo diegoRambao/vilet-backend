@@ -8,10 +8,11 @@ import {
   OneToMany,
 } from 'typeorm';
 
-import { SubCategoryScheme } from 'src/subcategories/infrastructure/subcategory.scheme';
-import { UserScheme } from 'src/users/infrastructure/user.scheme';
+import { RequestScheme } from 'src/requests/infrastructure/requests.scheme';
 import { SubCategory } from 'src/subcategories/domain/subcategory.entity';
+import { SubCategoryScheme } from 'src/subcategories/infrastructure/subcategory.scheme';
 import { User } from 'src/users/domain/user.entity';
+import { UserScheme } from 'src/users/infrastructure/user.scheme';
 
 @Entity({
   name: 'categories',
@@ -28,8 +29,16 @@ export class CategoryScheme {
   })
   subcategories?: SubCategory[] | null;
 
+  @Column('varchar', { length: 255 })
+  icon: string;
+
   @OneToMany(() => UserScheme, (user) => user.category, { nullable: true })
   users?: User[] | null;
+
+  @OneToMany(() => RequestScheme, (request) => request.category, {
+    nullable: true,
+  })
+  requests?: RequestScheme[] | null;
 
   @CreateDateColumn()
   createAt: Date;

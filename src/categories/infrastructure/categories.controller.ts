@@ -9,12 +9,13 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { GetListCategoryUseCase } from '../application/get-list-category.use-case';
-import { GetCategoryUseCase } from '../application/get-category.use-case';
-import { UpdateCategoryUseCase } from '../application/update-category.use-case';
-import { DeleteCategoryUseCase } from '../application/delete-category.use-case';
-import { JwtAuthGuard } from '../../shared/common/guards/jwt-auth.guard';
 import { ApiBearerAuth } from '@nestjs/swagger';
+
+import { DeleteCategoryUseCase } from '../application/delete-category.use-case';
+import { GetCategoryUseCase } from '../application/get-category.use-case';
+import { GetListCategoryUseCase } from '../application/get-list-category.use-case';
+import { JwtAuthGuard } from '../../shared/common/guards/jwt-auth.guard';
+import { UpdateCategoryUseCase } from '../application/update-category.use-case';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)

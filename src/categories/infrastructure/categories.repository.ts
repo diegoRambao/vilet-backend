@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { SubCategory } from 'src/subcategories/domain/subcategory.entity';
 import { Repository } from 'typeorm';
+
 import { Category } from '../domain/category.entity';
 import { CategoryRepositoryInterface } from '../domain/category.repository.interface';
 import { CategoryScheme } from './category.scheme';
@@ -17,6 +17,7 @@ export class CategoryRepository implements CategoryRepositoryInterface {
     const categoriesEntity = await this.ormRepo.find({
       relations: ['subcategories'],
     });
+    console.log(categoriesEntity);
     return categoriesEntity.map((category) => Category.create(category));
   }
 

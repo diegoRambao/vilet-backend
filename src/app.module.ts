@@ -10,6 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './shared/common/strategies/jwt.strategy';
 import { CategoriesModule } from './categories/categories.module';
 import { SubCategoriesModule } from './subcategories/categories.module';
+import { RequestsModule } from './requests/requests.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { SubCategoriesModule } from './subcategories/categories.module';
     AuthModule,
     CategoriesModule,
     SubCategoriesModule,
+    RequestsModule,
   ],
   providers: [JwtStrategy],
 })

@@ -6,24 +6,36 @@ export interface UserProperty {
   email: string;
   password: string;
   name: string;
+  phone: string;
   lastName?: string;
   type: UserType;
   categoryId?: number;
   category?: Category | null;
   description?: string;
-  location?: string | number;
+  country?: string;
+  latitude?: number;
+  longitude?: number;
+  place?: string;
+  placName?: string;
+  region?: string;
 }
 export class User {
   id: number;
   email: string;
   password: string;
   name: string;
+  phone: string;
   lastName?: string;
   type: UserType;
   categoryId?: number;
   description?: string;
-  location?: string | number;
   category?: Category | null;
+  country?: string;
+  latitude?: number;
+  longitude?: number;
+  place?: string;
+  placName?: string;
+  region?: string;
 
   constructor({
     name,
@@ -34,8 +46,14 @@ export class User {
     categoryId,
     type,
     description,
-    location,
     category,
+    phone,
+    country,
+    latitude,
+    longitude,
+    place,
+    placName,
+    region,
   }: UserProperty) {
     this.id = id;
     this.email = email;
@@ -45,8 +63,14 @@ export class User {
     this.categoryId = categoryId;
     this.type = type;
     this.description = description;
-    this.location = location;
     this.category = category;
+    this.phone = phone;
+    this.country = country;
+    this.latitude = latitude;
+    this.longitude = longitude;
+    this.place = place;
+    this.placName = placName;
+    this.region = region;
   }
 
   static create({
@@ -57,9 +81,15 @@ export class User {
     id,
     type,
     description,
-    location,
     categoryId,
     category,
+    phone,
+    country,
+    latitude,
+    longitude,
+    place,
+    placName,
+    region,
   }: UserProperty): User {
     return new User({
       name,
@@ -69,13 +99,19 @@ export class User {
       id,
       type,
       description,
-      location,
       categoryId,
       category,
+      phone,
+      country,
+      latitude,
+      longitude,
+      place,
+      placName,
+      region,
     });
   }
 
-  toJSON() {
+  public toJSON() {
     return {
       id: this.id,
       email: this.email,
@@ -84,9 +120,15 @@ export class User {
       lastName: this.lastName,
       type: this.type,
       description: this.description,
-      location: this.location,
       categoryId: this.categoryId,
       category: this.category,
+      phone: this.phone,
+      country: this.country,
+      latitude: this.latitude,
+      longitude: this.longitude,
+      place: this.place,
+      placName: this.placName,
+      region: this.region,
     };
   }
 }

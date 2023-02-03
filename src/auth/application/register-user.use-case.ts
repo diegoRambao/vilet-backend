@@ -39,4 +39,5 @@ type registerUserInput = {
   email: string;
   password: string;
   type: UserType;
+  phone: string;
 };

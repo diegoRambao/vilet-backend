@@ -8,7 +8,7 @@ import {
 } from './shared/common/interceptors/response.interceptor';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
 
   // app.useGlobalInterceptors(new ResponseInterceptor());
   app.enableVersioning({
@@ -27,8 +27,6 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-
-  app.enableCors();
 
   await app.listen(process.env?.PORT || 3000);
 }

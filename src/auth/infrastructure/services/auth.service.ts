@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+
 import { BcryptServiceInterface } from 'src/shared/domain/adapters/bcrypt.interface';
 import { ExceptionServiceInterface } from 'src/shared/domain/adapters/exceptions.interface';
 import { JwtServiceInterface } from 'src/shared/domain/adapters/jwt.interface';
